@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Form Debugger</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/bootstrap/dist/js/bootstrap.min.js">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+    <main class="container">
+
+      <h1>HTML Form Debugger</h1>
+      <p>
+        This web application displays all the parameters received via a form GET or POST request. Useful for debugging HTML forms.
+      </p>
+
+      <h2>HTTP Request</h2>
+
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var key of Object.keys(request)) { %>
+            <% if(typeof request[key] == 'string') { %>
+              <tr>
+                <td><%= key %></td>
+                <td><%= request[key] %></td>
+              </tr>
+          <%  } %>
+          <% } %>
+        </tbody>
+      </table>
+
+
+
+      <h2>HTTP Headers</h2>
+
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var key of Object.keys(headers)) { %>
+            <% if(typeof headers[key] == 'string') { %>
+              <tr>
+                <td><%= key %></td>
+                <td><%= headers[key] %></td>
+              </tr>
+          <%  } %>
+          <% } %>
+        </tbody>
+      </table>
+
+
+
+      <h2>Parameters</h2>
+
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var key of Object.keys(params)) { %>
+          <tr>
+            <td><%= key %></td>
+            <td><%= params[key] %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
